@@ -29,6 +29,12 @@ namespace mycpv
         {
             // Add framework services.
             services.AddMvc();
+	
+	    // ECA Added - IOptions<T> for your settings.	
+ 	    services.AddOptions();
+
+  	    services.Configure<CPVSettings>(Configuration.GetSection("CPVSettings"));
+	    services.AddSingleton<IConfiguration>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
